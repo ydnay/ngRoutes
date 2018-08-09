@@ -2,3 +2,16 @@
 <app-my-about></app-my-about> -->
 
 
+<nav>
+  <ul>
+  <li> <a [routerLink]="['home']"> Home </a> </li>
+  <li> <a [routerLink]="['about']"> About </a> </li>
+  <li> <a [routerLink]="['']"> Contacts </a> </li>
+  </ul>
+</nav>
+<h1> {{ title }} </h1>
+
+<router-outlet></router-outlet>
+<app-my-counter></app-my-counter>
+<!-- <app-my-home></app-my-home> -->
+<app-my-second-counter></app-my-second-counter>
