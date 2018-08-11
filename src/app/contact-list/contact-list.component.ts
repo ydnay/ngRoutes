@@ -8,20 +8,19 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-  // contacts: Array<Object> = [
-  //   { id: 100, name: 'Andy' },
-  //   { id: 201, name: 'George' },
-  //   { id: 302, name: 'Max' }
-  // ];
 
-  contacts: Array<Object> = [];
-  constructor(private router: Router, private contactService: ContactService) { }
+  contacts: Array<any>;
+
+  constructor(
+    private router: Router,
+    private contactService: ContactService
+  ) {}
 
   ngOnInit() {
     this.contacts = this.contactService.getList();
   }
 
-  viewDetails(id) {
-    this.router.navigate(['contact', id]);
+  viewDetails(id, param){
+    this.router.navigate(['contact', id], { queryParams: { foo: param }});
   }
 }

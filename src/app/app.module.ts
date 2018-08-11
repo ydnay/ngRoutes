@@ -11,7 +11,10 @@ import { ContactComponent } from './contact/contact.component';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { MySecondCounterComponent } from './my-second-counter/my-second-counter.component';
 import { CounterService } from './services/counter.service';
-import { ContactService } from './contact.service'
+import { ContactService } from './contact.service';
+import { ContactListServiceComponent } from './contact-list-service/contact-list-service.component';
+import { ContactOverviewComponent } from './contact-overview/contact-overview.component';
+import { ContactEditComponent } from './contact-edit/contact-edit.component'
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,9 +22,12 @@ const routes: Routes = [
   { path: 'about', component: MyAboutComponent },
   // { path: 'contact', component: ContactListComponent },
   { path: '', component: ContactListComponent },
-  { path: 'contact/:id', component: ContactComponent },
-  // { path: '', component: MyCounterComponent },
-  // { path: '', component: MySecondCounterComponent },
+  { path: 'contact/:id', component: ContactComponent,
+    children: [
+      { path: '', component: ContactOverviewComponent },
+      { path: 'edit', component: ContactEditComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -32,7 +38,10 @@ const routes: Routes = [
     ContactListComponent,
     ContactComponent,
     MyCounterComponent,
-    MySecondCounterComponent
+    MySecondCounterComponent,
+    ContactListServiceComponent,
+    ContactOverviewComponent,
+    ContactEditComponent
   ],
   imports: [
     BrowserModule,
